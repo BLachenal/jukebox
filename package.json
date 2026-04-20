@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node --env-file=.env server.js",
     "dev": "node --watch --env-file=.env server.js",
-    "test": "vitest",
+    "test": "vitest --bail=1",
     "db:schema": "psql -d jukebox -f db/schema.sql",
     "db:seed": "node --env-file=.env db/seed.js",
     "db:reset": "npm run db:schema && npm run db:seed"
@@ -17,6 +17,7 @@
     "pg": "^8.14.1"
   },
   "devDependencies": {
+    "@faker-js/faker": "^10.4.0",
     "supertest": "^7.1.0",
     "vitest": "^3.1.1"
   },
