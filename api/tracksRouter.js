@@ -12,8 +12,14 @@ router.get("/", async (req, res, next) => {
 });
 
 router.get("/:id", async (req, res, next) => {
+  const { id } = req.params;
+
+  if(isNaN(id)){
+    return res.status(400).send("ID must be a number.")
+  }
+  
   try {
-    const track = await getTrackById(req.params.id);
+    const track = await getTrackById(id);
     if (!track) {
       return res.status(404).send("Track not found.");
     }

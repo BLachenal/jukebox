@@ -18,13 +18,6 @@ export async function getPlaylistById(id) {
   return rows[0];
 }
 
-export async function createPlaylist({ name, description }) {
-  const { rows } = await db.query(
-    "INSERT INTO playlists (name, description) VALUES ($1, $2) RETURNING *",
-    [name, description]
-  );
-  return rows[0];
-}
 
 export async function getTracksByPlaylistId(id) {
   const { rows } = await db.query(
